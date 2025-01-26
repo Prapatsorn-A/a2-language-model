@@ -39,7 +39,7 @@ pip install -r requirements.txt
 **3. Running the Flask App:**
 To start the Flask web application, run the following command:
 ```bash
-python app/app.py
+python app.py
 ```
 This will start the app on `http://127.0.0.1:5000/`.
 
@@ -51,3 +51,15 @@ This will start the app on `http://127.0.0.1:5000/`.
 - **Contextually Relevant Output**: The model predicts the next word in the sequence, building a continuation that flows from the given prompt.
   
 - **Real-Time Display**: The generated text is displayed immediately below the input box, allowing users to view the model's response instantly.
+
+## Web Application Sample Screenshots
+
+**Screenshot 1: Homepage**
+This screenshot shows the initial homepage of the web application, where the user can input a text prompt.
+
+![Homepage](images/homepage.png)
+
+**Screenshot 2: Text Generation Output**
+This screenshot displays the result after the user entered the prompt **"yoda is"** and clicked **"Generate Text."** The model processes the input and generates a continuation of the text as an output.
+
+![Sample Prompt](images/sample-prompt.png)
