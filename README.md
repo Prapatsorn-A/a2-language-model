@@ -13,6 +13,7 @@ This project demonstrates the use of an **LSTM (Long Short-Term Memory)** langua
 - `A2.ipynb`: Jupyter notebook used for training the LSTM model and experimenting with different configurations.
 - `best-val-lstm_lm.pt`: The saved state dict of the trained LSTM model, which is loaded for inference in the app.
 - `vocab.pkl`: A pickle file containing the vocabulary used by the model for text generation.
+- `images/`: Folder containing screenshots of the web application (e.g., `homepage.png` and `sample-prompt.png`)
 
 ## Dataset
 The dataset used for training the model is the **Star Wars dataset** from Hugging Face, titled *myothiha/starwars*. It consists of 25,197 text samples drawn from dialogues and narratives within the Star Wars universe, making it well-suited for generating contextually relevant text in a Star Wars-like style.
