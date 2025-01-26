@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Themed Text Generation using LSTM</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4e73df, #1e3a8a);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
+        }
+
+        .title-line-1 {
+            font-size: 3rem;
+            color: #1e3a8a;
+        }
+
+        .title-line-2 {
+            font-size: 2rem;
+            color: #1e3a8a;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Form styles */
+        .input-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 2px solid #4e73df;
+            border-radius: 10px;
+            background-color: #f0f8ff;
+            transition: all 0.3s;
+            box-sizing: border-box; 
+        }
+
+        .input-box:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        /* Output styles */
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px solid #a5b4fc;
+            border-radius: 10px;
+            font-family: 'Arial', sans-serif; 
+            color: #1e3a8a; 
+            font-size: 16px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            box-sizing: border-box;
+        }
+
+        /* Hover effects on container */
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn {
+                font-size: 16px;
+            }
+
+            .input-box {
+                font-size: 14px;
+            }
+        }
+
+        /* Label style */
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+            color: #1e3a8a;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span class="title-line-1">Star Wars Themed</span><br>
+            <span class="title-line-2">Text Generation using LSTM</span>
+        </h1>
+        <form id="generateForm">
+            <label for="prompt">Prompt:</label>
+            <input type="text" id="prompt" class="input-box" placeholder="Enter a prompt..." required>
+            <button type="submit" class="btn">Generate Text</button>
+        </form>
+        <div class="output" id="generatedText"></div>
+    </div>
+
+    <script>
+        document.getElementById('generateForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            const temperature = 1.0;  // Set temperature directly in the JavaScript
+
+            fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'prompt': prompt,
+                    'temperature': temperature
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('generatedText').textContent = data.generated_text;
+            });
+        });
+    </script>
+</body>
+</html>
