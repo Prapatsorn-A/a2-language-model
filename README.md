@@ -55,11 +55,13 @@ This will start the app on `http://127.0.0.1:5000/`.
 ## Web Application Sample Screenshots
 
 **Screenshot 1: Homepage**
+
 This screenshot shows the initial homepage of the web application, where the user can input a text prompt.
 
 ![Homepage](images/homepage.png)
 
 **Screenshot 2: Text Generation Output**
+
 This screenshot displays the result after the user entered the prompt **"yoda is"** and clicked **"Generate Text."** The model processes the input and generates a continuation of the text as an output.
 
 ![Sample Prompt](images/sample-prompt.png)
